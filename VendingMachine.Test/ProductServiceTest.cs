@@ -22,21 +22,15 @@ namespace VendingMachine.Test
             
         }
 
-        //[Test]
-        //public void GetAllProductTest()
-        //{
-        //    // Arrange
-        //    _productStoreService.Setup(mock => mock.GetProductList()).Returns(new List<Product>());
-        //    var productService = new ProductService(_productStoreService.Object);
-        //    var result = productService.GetProduct("Fruit1");
-
-        //    // Assert
-        //    Assert.AreEqual(result != null, true);
-        //    Assert.AreEqual(result.ProductCode, "Fruit1");
-        //    Assert.AreEqual(result.ProductName, "Apple");
-        //    Assert.AreEqual(result.ProductPrice, 1.00m);
-        //    Assert.AreEqual(result.ProductType, ProductTypes.Apple);
-        //}
+        [Test]
+        public void GetAllProductTest()
+        {
+            // Arrange
+            _productStoreService.Setup(mock => mock.GetProductList()).Returns(new List<Product>());
+            var productService = new ProductService(_productStoreService.Object);
+            var result = productService.GetProduct("Fruit2");
+            _productStoreService.Verify(m => m.GetProductList(), Times.Once);
+        }
         [Test]
         public void GetAllProductsTest()
         {
@@ -54,6 +48,16 @@ namespace VendingMachine.Test
 
             // Assert
             Assert.AreEqual(result, 10);
+        }
+        private Product CreateBananaProduct()
+        {
+            return new Product
+            {
+                ProductCode = ProductTypes.Banana.GetEnumCode(),
+                ProductType = ProductTypes.Banana,
+                ProductName = ProductTypes.Banana.ToString(),
+                ProductPrice = 0.25m
+            };
         }
     }
 }
