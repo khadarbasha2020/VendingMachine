@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/VendingMachine.Test/bin/Debug/net6.0
+/VendingMachine.Test/obj
+/VendorMachine/bin/Debug/net6.0
+/VendorMachine/obj
+/.vs/VendingMachine
