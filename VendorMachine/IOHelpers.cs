@@ -47,9 +47,6 @@ namespace VendingMachine
                 Console.WriteLine($"Product Details {response.ProductDetails}");
             if (response.ChangeAmount != null)
                 WriteItemChangeToScreen(response.ChangeAmount);
-
-            // Console.WriteLine("IsSuccess : " + response.IsSuccess);
-
         }
 
         public static void WriteItemChangeToScreen(IEnumerable<ChangeCoins> change)
@@ -60,28 +57,9 @@ namespace VendingMachine
 
             foreach (var item in change)
             {
-                switch (item.Type)
-                {
-                    case CoinType.Nickels:
-                        Console.WriteLine("No Of Nickels(0.05) : " + item.Number);
-                        break;
-                    case CoinType.Dimes:
-                        Console.WriteLine("No Of Dimes(0.10) : " + item.Number);
-                        break;
-                    case CoinType.Quarters:
-                        Console.WriteLine("No Of Quarters(0.25) : " + item.Number);
-                        break;
-                    case CoinType.HalfDollar:
-                        Console.WriteLine("No Of HalfDollar(0.50) : " + item.Number);
-                        break;
-                    case CoinType.Dollar:
-                        Console.WriteLine("No Of 1 Dollar : " + item.Number);
-                        break;
-                    default:
-                        Console.WriteLine("0");
-                        throw new ArgumentOutOfRangeException();
-                }
+                Console.WriteLine($"No Of {item.Type}s Returned : {item.Number}");
             }
+            Console.WriteLine("\nPlease collect your chnage. Thank you.\n");
         }
         public static void LineSpace()
         {
